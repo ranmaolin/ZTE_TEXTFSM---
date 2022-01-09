@@ -1,0 +1,20 @@
+Value Interface_Name (\S+)
+Value Description (\S+)
+Value AdminStatus (\S+)
+Value PhyStatus (\S+)
+Value Line_Protocol_Status (\S+)
+Value IPv4_Protocol_Status (\S+)
+Value VRF_NAME (\S+)
+Value IPADDRESS (\S+)
+Value MASK (\d+)
+Value IP_MTU (\d+)
+
+
+
+Start
+  ^${Interface_Name}\sAdminStatus\sis\s${AdminStatus},\sPhyStatus\sis\s${PhyStatus},\sline\sprotocol\sis\s${Line_Protocol_Status},\sIPv4\sprotocol\sis\s${IPv4_Protocol_Status}
+  ^\s+ip\svrf\sforwarding\s${VRF_NAME}
+  ^\s+description\sis\s${Description}
+  ^\s+Internet\saddress\sis\s${IPADDRESS}\/${MASK}
+  ^\s+IP\sMTU\s${IP_MTU}\s -> Record
+

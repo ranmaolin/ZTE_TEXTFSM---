@@ -1,0 +1,26 @@
+Value Interface_Name (\S+)
+Value Port_Status (\S+(\s.+){0,1})
+Value MTU (\d+)
+Value Description ((\S+){0,1})
+Value MacAddress (\S+)
+Value Intf_Uti_IN (\S+)
+Value Intf_Uti_OUT (\S+)
+Value In_Error (\d+)
+Value In_CRC_ERROR (\d+)
+Value In_DropEvents (\d+)
+Value E_Error (\d+)
+Value E_DropEvents (\d+)
+
+
+Start
+  ^${Interface_Name}\sis\s${Port_Status},
+  ^\s+MTU\s${MTU}\s
+  ^\s+Description:\s${Description}
+  ^\s+Intf\sutilization:\sinput\s${Intf_Uti_IN}\s+output\s${Intf_Uti_OUT}
+  ^\s+In_Error\s+${In_Error}
+  ^\s+\w+\s+\d+\s+In_CRC_ERROR\s+${In_CRC_ERROR}
+  ^\s+In_DropEvents\s+${In_DropEvents}
+  ^\s+E_Error\s+${E_Error}
+  ^\s+\w+\s\w+\s\w+\s\w+,\saddress\sis\s${MacAddress}
+  ^\s+E_DropEvents\s+${E_DropEvents} -> Record
+

@@ -1,0 +1,11 @@
+Value Interface_Name (\S+)
+Value NEXTHOP (\d+.\d+.\d+.\d+)
+Value VRFNAME (\S+)
+Value DES_NET (\d+.\d+.\d+.\d+)
+Value DES_MASK (\d+.\d+.\d+.\d+)
+
+
+
+
+Start
+  ^ip\sroute\s(vrf\s${VRFNAME}\s){0,1}${DES_NET}\s${DES_MASK}\s(${Interface_Name}\s){0,1}${NEXTHOP}\s -> Record

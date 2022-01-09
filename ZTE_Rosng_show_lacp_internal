@@ -1,0 +1,10 @@
+Value Filldown SmartgroupID (Smartgroup:\d+)
+Value Interface (\S+-\S+\d)
+Value Flags (\S+)
+Value Required STATE (\S+)
+
+Start
+  ^${SmartgroupID} -> Record
+  ^${Interface}(\[${Flags}\]){0,1}\s+${STATE}\s -> Record
+
+

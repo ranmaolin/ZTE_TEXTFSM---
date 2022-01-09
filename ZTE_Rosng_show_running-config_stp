@@ -1,0 +1,11 @@
+Value Filldown HostName (\S+)
+Value Required InterfaceName (\S+)
+Value STP_Mode ((\S+\s{0,1}(enable){0,1}){0,1})
+
+
+
+Start
+  ^${HostName}#
+  ^\s+interface\s${InterfaceName}
+  ^\s+${STP_Mode} -> Record
+

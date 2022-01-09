@@ -1,0 +1,21 @@
+Value Filldown HostName (\S+)
+Value InterfaceName (\S+)
+Value Sour_IPV6 (\S+)
+Value Des_IPV6 (\S+)
+Value Priority (\d+)
+Value RoID (\d+)
+Value Node_ID (\d+)
+Value SYS_ID (\S+)
+Value Required SYS_Priority (\S+)
+Value Track_Name (\S+)
+
+
+Start
+  ^${HostName}#
+  ^\s+interface\s${InterfaceName}
+  ^\s+mc-lag\sipv6\ssource\s${Sour_IPV6}\sdestination\s${Des_IPV6}
+  ^\s+mc-lag\spriority\s${Priority}
+  ^\s+mc-lag\sroid\s${RoID}\snode-id\s${Node_ID}
+  ^\s+mc-lag\ssys-id\s${SYS_ID}\ssys-priority\s${SYS_Priority}
+  ^\s+mc-lag\strack\s${Track_Name} -> Record
+
